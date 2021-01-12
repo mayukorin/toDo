@@ -15,6 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJECT_NAME = os.path.basename(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -123,6 +124,9 @@ AUTH_USER_MODEL = 'app1.SiteUser'
 STATIC_DIRS = {
     os.path.join(BASE_DIR,"static"),
     }
+
+STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
+
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success'}

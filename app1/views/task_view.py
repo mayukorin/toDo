@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from app1.forms.taskForm import TaskRegisterForm
 from django.core.paginator import Paginator, EmptyPage
-from config.settings.base import PAGE_PER_ITEM, DEADLINE_FORMAT_NECESSARY, DEADLINE_FORMAT_UNNECESSARY
+from config.settings.base import PAGE_PER_ITEM, DEADLINE_FORMAT_NECESSARY, DEADLINE_FORMAT_UNNECESSARY, BASE_DIR, PROJECT_NAME
 
 
 class TaskListView(LoginRequiredMixin, View):
@@ -14,6 +14,9 @@ class TaskListView(LoginRequiredMixin, View):
         
         tasks = Task.objects.filter(site_user__id=request.user.id).order_by('deadline')
         paginator = Paginator(tasks, PAGE_PER_ITEM)
+        print('aa')
+        print(BASE_DIR)
+        print(PROJECT_NAME)
         
         try:
             page_obj = paginator.page(page)
