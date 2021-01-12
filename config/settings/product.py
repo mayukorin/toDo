@@ -7,7 +7,7 @@ Created on Tue Jan 12 18:27:55 2021
 
 from .base import *
 import dj_database_url
-
+from socket import gethostname
 
 hostname = gethostname()
 
