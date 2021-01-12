@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>タスク編集ページ</h2><br>
+    <form method="post"　action="{% url 'app1:task_update' task_id%}">
+        <div class="form-group">
+            <label>タスク名</label>
+            <input 
+                type="{{form.title.field.widget.input_type}}" 
+                class="form-control {% if form.title.errors %} is-invalid {% endif %}" 
+                name="{{form.title.name}}" 
+                value="{% if form.title.value is not None %}{{form.title.value}}{% endif %}"
+            >
+            {% if form.title.errors %}
+                    <div class="invalid-feedback">{{form.title.errors.0}}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>内容</label>
+            <textarea name="{{form.content.name}}" class="form-control">{% if form.content.value is not None %}{{form.content.value}}{% endif %}</textarea>
+        </div>
+        <div class="form-group">
+            <label>締め切り</label>
+            <input 
+                type="{{form.deadline.field.widget.input_type}}" 
+                class="form-control" 
+                name="{{form.deadline.name}}" 
+                value="{% if form.deadline.value is not None and deadline_format_necessity == 1 %}{{form.deadline.value|date:'Y-m-d'}}T{{form.deadline.value|date:'H:i'}}{% elif form.deadline.value is not None and deadline_format_necessity == 0%}{{form.deadline.value}}{% endif %}"
+            >
+        </div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary mb-2">更新</button>
+    </form>
+    <p><a href="{% url 'app1:task_show' task_id request.session.page %}">タスク詳細ページに戻る</a></p>
+    
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post" action="{% url 'app1:siteUser_login' %}">
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for non_field_error in form.non_field_errors %}
+                        <li>{{non_field_error}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% for item in form %}
+            <div class="form-group" >
+                <label>{{item.field.label}}</label>
+                <input class="form-control {% if item.errors %} is-invalid {% endif%}" name="{{item.name}}" type="{{item.field.widget.input_type}}">
+                {% if item.errors %}
+                    <div class="invalid-feedback">{{item.errors.0}}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-primary mb-2">ログイン</button>
+        {% csrf_token %}
+    </form>
+   <p><a href="{% url 'app1:siteUser_register' %}">新規会員登録をする</a></p>
+{% endblock %}
+
+

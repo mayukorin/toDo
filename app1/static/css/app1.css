@@ -1,0 +1,33 @@
+#main {
+    width:60%;
+    margin:auto;
+}
+
+#main table {
+    margin-top:30px;
+}
+
+#main p {
+    margin-top:10px;
+}
+
+.deadline {
+	width:200px;
+	margin-left:auto;
+	font-size: 80%;
+	color:red;
+}
+
+.check {
+    color:#66FF66;
+}
+
+.task:link { color:black; text-decoration:none }
+.task:visited { color:black; text-decoration:none }
+.task:hover { color:black; text-decoration:none }
+.task:active { color:black; text-decoration:none }
+
+.maru:link { color:black; text-decoration:none }
+.maru:visited { color:black; text-decoration:none }
+.maru:hover { color:black; text-decoration:none }
+.maru:active { color:black; text-decoration:none }

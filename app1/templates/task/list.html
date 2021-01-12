@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>タスク一覧</h2><br>
+    {% if tasks %}
+        <table class="table">
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>
+                        {% if task.done_flag == True %}
+                            <a class="maru" href="{% url 'app1:task_done' task.id tasks.number %}"><i class="far fa-check-circle check"></i></a>
+                        {% else %}
+                            
+                            <a class="maru" href="{% url 'app1:task_done' task.id tasks.number %}"><i class="far fa-circle"></i></a>
+                        {% endif %}
+                    </td>
+                    <td>
+                            {{task.title}}
+                            <div class="deadline">
+                                {{task.deadline|date:"Y/m/d H:i"}}
+                            </div>
+                        
+                    </td>
+                    <td>
+                        <a href="{% url 'app1:task_show' task.id tasks.number %}">詳細</a>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+        
+    {% endif %}
+    <p><a href="{% url 'app1:task_register' %}">taskを追加する</a></p>
+    <div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+            {% for link_page in tasks.paginator.page_range %}
+                {% if link_page %}
+                    {% if link_page == tasks.number %}
+                        <li class="disabled"><div class="page-link text-secondary d-inline-block disabled" href="#">{{ link_page }}</div></li>
+                    {% else %}
+                        <li><a class="page-link text-primary d-inline-block" href="{% url 'app1:task_list'  link_page %}">{{ link_page }}</a></li>
+                    {% endif %}
+                {% else %}
+                    <li class="disabled"><a class="page-link text-secondary d-inline-block text-muted" href="#">・・・</a></li>
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+    </nav>
+</div>
+{% endblock %}
+
