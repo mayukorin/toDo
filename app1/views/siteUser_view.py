@@ -85,7 +85,7 @@ class SiteUserLoginView(View):
         
         messages.success(request, 'こんにちは'+request.user.username+'さん')
         
-        return redirect('app1:task_list')
+        return redirect('app1:task_list', page=1)
     
     
 siteUser_login = SiteUserLoginView.as_view()
