@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from app1.forms.taskForm import TaskRegisterForm
 from django.core.paginator import Paginator, EmptyPage
-from config.settings import PAGE_PER_ITEM, DEADLINE_FORMAT_NECESSARY, DEADLINE_FORMAT_UNNECESSARY
+from config.settings.base import PAGE_PER_ITEM, DEADLINE_FORMAT_NECESSARY, DEADLINE_FORMAT_UNNECESSARY
 
 
 class TaskListView(LoginRequiredMixin, View):
@@ -102,7 +102,7 @@ class TaskDeleteView(LoginRequiredMixin, View):
         
         messages.success(request, 'taskの削除が完了しました')
         
-        return redirect('app1:task_list', page=1)
+        return redirect('app1:task_list', page=request.session['page'])
     
     
 task_delete_view = TaskDeleteView.as_view()
