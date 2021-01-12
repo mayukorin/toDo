@@ -23,7 +23,9 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'app1:task_list' 1 %}">task一覧<span class="sr-only">(current)</span></a>
+                      {% if user.is_authenticated %}
+                          <a class="nav-link" href="{% url 'app1:task_list' 1 %}">task一覧<span class="sr-only">(current)</span></a>
+                      {% endif %}
                   </li>
                   <li class="nav-item active">
                       {% if user.is_authenticated %}
