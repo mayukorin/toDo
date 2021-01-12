@@ -31,6 +31,7 @@ django-cloudinary-storage==0.3.0
 django-crispy-forms==1.10.0
 django-heroku==0.3.1
 django-toolbelt==0.0.1
+djangorestframework==3.12.2
 docutils==0.16
 entrypoints==0.3
 flake8==3.8.4
@@ -103,6 +104,7 @@ QtPy==1.9.0
 regex==2020.11.13
 requests==2.25.1
 rope==0.18.0
+sip==4.19.13
 six==1.15.0
 snowballstemmer==2.0.0
 sortedcontainers==2.3.0
