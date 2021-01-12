@@ -8,6 +8,8 @@ Created on Tue Jan 12 18:27:55 2021
 from .base import *
 import dj_database_url
 from socket import gethostname
+import django_heroku
+
 
 hostname = gethostname()
 
@@ -19,3 +21,5 @@ DATABASES = {
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
+
+django_heroku.settings(locals())
