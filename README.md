@@ -17,9 +17,10 @@
 * PostgreSQL
 * psycopg2
 
+# Database  
 # Usage
 
-```python manage.py runserver```でhttp://127.0.0.1:8000/siteUser/login にアクセス  
+* 
 
 
 
