@@ -14,9 +14,6 @@ class TaskListView(LoginRequiredMixin, View):
         
         tasks = Task.objects.filter(site_user__id=request.user.id).order_by('deadline')
         paginator = Paginator(tasks, PAGE_PER_ITEM)
-        print('aa')
-        print(BASE_DIR)
-        print(PROJECT_NAME)
         
         try:
             page_obj = paginator.page(page)
