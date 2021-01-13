@@ -60,6 +60,7 @@ class TaskShowView(LoginRequiredMixin, View):
         
         task = Task.objects.get(pk=task_id)
         request.session['page'] = page
+        request.session['task'] = task
         return render(request, 'task/show.html', {'task': task})
     
 task_show_view = TaskShowView.as_view()
