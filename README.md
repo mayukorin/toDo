@@ -34,7 +34,7 @@
 写真の赤丸の部分をクリック。すると、緑色のチェックマークから黒丸になる。タスク詳細画面でも同じことができる。  
 
 # Link
-https://simple-todo-simple.herokuapp.com/siteUser/login  
-にアクセスしてください。ユーザー名「test7」、パスワード「abc」でログインすることができます。  
+https://todo-app73.herokuapp.com/siteUser/login
+にアクセスしてください。ユーザー名「test」、パスワード「abc」でログインすることができます。  
 
 
