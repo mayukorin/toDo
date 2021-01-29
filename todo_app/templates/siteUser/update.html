@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>会員情報編集画面</h2><br>
+    <form method="post" action="{% url 'todo_app:siteUser_update' %}">
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for non_field_error in form.non_field_errors %}
+                        <li>{{non_field_error}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% for item in form %}
+            <div class="form-group">
+                <label>{{item.field.label}}</label>
+                {{item}}
+                {% if item.errors %}
+                    <div class="invalid-feedback">{{item.errors.0}}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary mb-2">登録</button>
+    </form>
+
+{% endblock %}

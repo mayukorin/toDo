@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>タスク新規作成ページ</h2><br>
+    <form method="post" action="{% url 'todo_app:task_register' %}">
+        {% for item in form %}
+            <div class="form-group">
+                {% if forloop.counter0 != 1 %}
+                    <label>{{item.field.label}}</label>
+                    <input 
+                        type="{{item.field.widget.input_type}}" 
+                        name="{{item.name}}" 
+                        class="form-control {% if item.errors %} is-invalid {% endif %}" 
+                        value="{% if item.value is not None %}{{item.value}}{% endif %}"
+                    >
+                    {% if item.errors %}
+                        <div class="invalid-feedback">{{item.errors.0}}</div>
+                    {% endif %}
+                {% else %}
+                    <label>{{item.field.label}}</label>
+                    <textarea name="{{item.name}}" class="form-control">{% if item.value is not None %}{{item.value}}{% endif %}</textarea>
+                {% endif %}     
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary mb-2">登録</button>
+    </form>
+   
+{% endblock %}
+
